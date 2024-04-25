@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: {{ .Values.deploymentType }}
+metadata:
+  labels:
+    k8s-app: {{ template "sitermagent.truncname" . }}
+  name: {{ template "sitermagent.truncname" . }}
+  namespace: {{ .Values.namespace}}
+spec:
+  selector:
+    matchLabels:
+      k8s-app: {{ template "sitermagent.truncname" . }}
+  template:
+    metadata:
+      labels:
+        k8s-app: {{ template "sitermagent.truncname" . }}
+    spec:
+      containers:
+      - image: {{ .Values.image.image }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: {{ template "sitermagent.truncname" . }}
+        resources:
+          {{- toYaml .Values.resources | nindent 12 }}
+        securityContext:
+          privileged: true
+          capabilities:
+            add:
+            - NET_ADMIN
+{{- if .Values.tolerations }}
+        tolerations:
+{{ toYaml .Values.tolerations | indent 10 }}
+{{- end }}
+        volumeMounts:
+        - mountPath: /etc/siterm.yaml
+          name: conf-{{ template "sitermagent.truncname" . }}
+          subPath: sense-siterm-agent.yaml
+        - mountPath: /etc/grid-security/hostcert.pem
+          name: agent-hostcert
+          readOnly: true
+          subPath: hostcert.pem
+        - mountPath: /etc/grid-security/hostkey.pem
+          name: agent-hostkey
+          readOnly: true
+          subPath: hostkey.pem
+        - mountPath: /etc/iproute2/rt_tables
+          name: etc-iproute2
+          readOnly: true
+        - mountPath: /run/lldpd/lldpd.socket
+          name: lldpd-socket
+          readOnly: true
+        - mountPath: /var/run/netns
+          name: run-netns
+          readOnly: true
+      hostNetwork: true
+      hostPID: true
+      {{- if eq .Values.deploymentType "Deployment" }}
+      nodeSelector:
+        kubernetes.io/hostname: {{ .Values.nodeSelector }}
+      {{- end }}
+      restartPolicy: Always
+      volumes:
+        - name: agent-hostcert
+          secret:
+            defaultMode: 420
+            items:
+            - key: tls.crt
+              path: hostcert.pem
+            secretName: cert-{{ template "sitermagent.truncname" . }}
+        - name: agent-hostkey
+          secret:
+            defaultMode: 384
+            items:
+            - key: tls.key
+              path: hostkey.pem
+            secretName: cert-{{ template "sitermagent.truncname" . }}
+        - configMap:
+            defaultMode: 420
+            items:
+            - key: sense-siterm-agent
+              path: sense-siterm-agent.yaml
+            name: conf-{{ template "sitermagent.truncname" . }}
+          name: conf-{{ template "sitermagent.truncname" . }}
+        - hostPath:
+            path: /etc/iproute2/rt_tables
+            type: ""
+          name: etc-iproute2
+        - hostPath:
+            path: /run/lldpd/lldpd.socket
+            type: ""
+          name: lldpd-socket
+        - hostPath:
+            path: /var/run/netns/
+            type: ""
+          name: run-netns
