@@ -8,10 +8,10 @@ Expand the name of the chart.
 {{- if eq .Values.deploymentType "Deployment" }}
 {{- printf "%s-conf-%s" .Chart.Name .Values.md5 | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- else }}
-{{- printf "%s-conf-%s" .Chart.Name .Values.deploymentType | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- printf "%s-conf-%s" .Chart.Name .Values.deploymentType | replace "+" "_" | trunc 63 | trimSuffix "-" | lower }}
 {{- end }}
 {{- else }}
-{{- printf "%s-conf-%s" .Chart.Name .Values.deploymentType | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- printf "%s-conf-%s" .Chart.Name .Values.deploymentType | replace "+" "_" | trunc 63 | trimSuffix "-" | lower }}
 {{- end }}
 {{- end }}
 

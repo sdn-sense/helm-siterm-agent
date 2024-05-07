@@ -29,6 +29,20 @@ spec:
           capabilities:
             add:
             - NET_ADMIN
+        livenessProbe:
+          exec:
+            command:
+            - siterm-liveness
+          initialDelaySeconds: 60
+          periodSeconds: 60
+          failureThreshold: 3
+        readinessProbe:
+          exec:
+            command:
+            - siterm-readiness
+          initialDelaySeconds: 60
+          periodSeconds: 60
+          failureThreshold: 3
         volumeMounts:
         - mountPath: /etc/siterm.yaml
           name: conf-{{ template "sitermagent.truncname" . }}
