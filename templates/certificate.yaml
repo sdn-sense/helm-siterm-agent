@@ -25,7 +25,7 @@ spec:
   renewBefore: {{ .Values.certmanager_params.renewBefore }}
 {{- end }}
   secretName: cert-{{ template "sitermagent.truncname" . }}
-{{- else }}
+{{- else if .Values.usehostcert }}
 apiVersion: v1
 kind: Secret
 metadata:
