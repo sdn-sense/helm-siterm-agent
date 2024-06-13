@@ -11,22 +11,26 @@ namespace: opennsa
 #    DaemonSet - Deploy on all available nodes
 deploymentType: Deployment
 
-# Image to run.
-# latest - Production release
-# dev - Development release
-image:
-  image: sdnsense/site-agent-sense:dev
-  pullPolicy: Always
+# Image to run. Helm charts run same image as helm version by default.
+# If you helm chart installed is 0.1.46 - it will use latest-1.4.6 image
+# Please consult SENSE team if any changes needed, but usually no.
+# During upgrade process - new helm chart will take new image of specified version of helm.
+# latest - Latest stable version (might be not from same helm release and missing Helm features)
+# dev - Development release (use with caution)
+# pullPolicy: Always - Always pull image from repository (that is default) Overwrite if needed.
+#image:
+#  pullPolicy: Always
+#  image: latest-20240614
 
 # Resources for Agent. This should not require any changes.
 # Defaults below:
 resources:
   limits:
-    cpu: 1
-    memory: 3Gi
+    cpu: 2
+    memory: 4Gi
   requests:
-    cpu: 1
-    memory: 3Gi
+    cpu: 2
+    memory: 4Gi
 
 # SiteRM Agent requires privileges to create vlan interfaces
 # and it requires NET_ADMIN capabilities.
@@ -44,8 +48,21 @@ securityContext:
 #     effect: "NoSchedule|PreferNoSchedule|NoExecute(1.6 only)"
 
 # Node Selector for your deployment. Required to set if deploymentType is Deployment:
-nodeSelector: node-2-7.sdsc.optiputer.net
+nodeSelector:
+  kubernetes.io/hostname: node-2-7.sdsc.optiputer.net
 # In case of DaemonSet - it will be ignored.
+
+# Affinity for your deployment. Include as many as you need and it will
+# be added to your deployment file.
+# affinity:
+#   nodeAffinity:
+#     requiredDuringSchedulingIgnoredDuringExecution:
+#       nodeSelectorTerms:
+#         - matchExpressions:
+#             - key: kubernetes.io/nodepool
+#               operator: In
+#               values:
+#                 - nodepool1
 
 # Configuration parameters for Agent(s):
 # These must be defined and configured here: https://github.com/sdn-sense/rm-configs

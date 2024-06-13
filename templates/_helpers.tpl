@@ -2,6 +2,30 @@
 Expand the name of the chart.
 */}}
 
+{{- define "deploymentimage" -}}
+{{- if .Values.image }}
+{{- if .Values.image.image }}
+{{- printf "sdnsense/site-agent-sense:%s" .Values.image.image }}
+{{- else }}
+{{- printf "sdnsense/site-agent-sense:latest-20240614"}}
+{{- end }}
+{{- else }}
+{{- printf "sdnsense/site-agent-sense:latest-20240614"}}
+{{- end }}
+{{- end }}
+
+{{- define "deploymentpullpolicy" -}}
+{{- if .Values.image }}
+{{- if .Values.image.pullPolicy }}
+{{- printf "%s" .Values.image.pullPolicy }}
+{{- else }}
+{{- printf "Always"}}
+{{- end }}
+{{- else }}
+{{- printf "Always"}}
+{{- end }}
+{{- end }}
+
 
 {{- define "sitermagent.truncname" -}}
 {{- if .Values.md5 }}

@@ -14,13 +14,21 @@ spec:
       labels:
         k8s-app: {{ template "sitermagent.truncname" . }}
     spec:
-{{- if .Values.tolerations }}
+      {{- if .Values.tolerations }}
       tolerations:
-{{ toYaml .Values.tolerations | indent 6 }}
-{{- end }}
+      {{ toYaml .Values.tolerations | indent 6 }}
+      {{- end }}
+      {{- if .Values.affinity }}
+      affinity:
+      {{ toYaml .Values.affinity | indent 6 }}
+      {{- end }}
+      {{- if and (.Values.nodeSelector) (eq .Values.deploymentType "Deployment")}}
+      nodeSelector:
+      {{ toYaml .Values.nodeSelector | indent 6 }}
+      {{- end }}
       containers:
-      - image: {{ .Values.image.image }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
+      - image: {{ template "deploymentimage" . }}
+        imagePullPolicy: {{ template "deploymentpullpolicy" . }}
         name: {{ template "sitermagent.truncname" . }}
         resources:
           {{- toYaml .Values.resources | nindent 12 }}
@@ -66,10 +74,6 @@ spec:
           readOnly: true
       hostNetwork: true
       hostPID: true
-      {{- if eq .Values.deploymentType "Deployment" }}
-      nodeSelector:
-        kubernetes.io/hostname: {{ .Values.nodeSelector }}
-      {{- end }}
       restartPolicy: Always
       volumes:
         - name: agent-hostcert
