@@ -23,14 +23,12 @@ deploymentType: Deployment
 #  image: latest-20240614
 
 # Resources for Agent. This should not require any changes.
-# Defaults below:
-resources:
-  limits:
-    cpu: 2
-    memory: 4Gi
-  requests:
-    cpu: 2
-    memory: 4Gi
+# Defaults below (no need to uncomment and those will be used by helm chart)
+# Change it only if needed.
+#cpuLimit: 2
+#memoryLimit: 4Gi
+#cpuRequest: 1
+#memoryRequest: 2Gi
 
 # SiteRM Agent requires privileges to create vlan interfaces
 # and it requires NET_ADMIN capabilities.

@@ -1,7 +1,6 @@
 {{/*
-Expand the name of the chart.
+Define Deployment image
 */}}
-
 {{- define "deploymentimage" -}}
 {{- if .Values.image }}
 {{- if .Values.image.image }}
@@ -13,6 +12,10 @@ Expand the name of the chart.
 {{- printf "sdnsense/site-agent-sense:latest-20240614"}}
 {{- end }}
 {{- end }}
+
+{{/*
+Define Deployment pull policy
+*/}}
 
 {{- define "deploymentpullpolicy" -}}
 {{- if .Values.image }}
@@ -26,6 +29,44 @@ Expand the name of the chart.
 {{- end }}
 {{- end }}
 
+{{/*
+Define CPU and Memory Limits/Requests
+*/}}
+{{- define "cpulimit" -}}
+{{- if .Values.cpuLimit }}
+{{- printf "%d" (.Values.cpuLimit | int) }}
+{{- else }}
+{{- printf "2"}}
+{{- end }}
+{{- end }}
+
+{{- define "cpuRequest" -}}
+{{- if .Values.cpuRequest }}
+{{- printf "%d" (.Values.cpuRequest | int) }}
+{{- else }}
+{{- printf "1"}}
+{{- end }}
+{{- end }}
+
+{{- define "memorylimit" -}}
+{{- if .Values.memoryLimit }}
+{{- printf "%s" .Values.memoryLimit }}
+{{- else }}
+{{- printf "4Gi"}}
+{{- end }}
+{{- end }}
+
+{{- define "memoryRequest" -}}
+{{- if .Values.memoryRequest }}
+{{- printf "%s" .Values.memoryRequest }}
+{{- else }}
+{{- printf "2Gi"}}
+{{- end }}
+{{- end }}
+
+{{/*
+Expand the name of the chart.
+*/}}
 
 {{- define "sitermagent.truncname" -}}
 {{- if .Values.md5 }}

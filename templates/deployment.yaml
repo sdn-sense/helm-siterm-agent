@@ -31,7 +31,12 @@ spec:
         imagePullPolicy: {{ template "deploymentpullpolicy" . }}
         name: {{ template "sitermagent.truncname" . }}
         resources:
-          {{- toYaml .Values.resources | nindent 12 }}
+          limits:
+            cpu: {{ template "cpulimit" .}}
+            memory: {{ template "memorylimit" . }}
+          requests:
+            cpu: {{ template "cpuRequest" . }}
+            memory: {{ template "memoryRequest" . }}
         securityContext:
           privileged: true
           capabilities:
