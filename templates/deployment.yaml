@@ -16,15 +16,15 @@ spec:
     spec:
       {{- if .Values.tolerations }}
       tolerations:
-      {{ toYaml .Values.tolerations | indent 6 }}
+        {{ .Values.tolerations | toYaml | indent 8 | trim }}
       {{- end }}
       {{- if .Values.affinity }}
       affinity:
-      {{ toYaml .Values.affinity | indent 6 }}
+        {{ .Values.affinity | toYaml | indent 8 | trim }}
       {{- end }}
       {{- if and (.Values.nodeSelector) (eq .Values.deploymentType "Deployment")}}
       nodeSelector:
-      {{ toYaml .Values.nodeSelector | indent 6 }}
+        {{ .Values.nodeSelector | toYaml | indent 8 | trim }}
       {{- end }}
       containers:
       - image: {{ template "deploymentimage" . }}

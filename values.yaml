@@ -39,11 +39,11 @@ securityContext:
 
 # tolerations for your deployment. Include as many as you need and it will
 # be added to your deployment file.
-# tolerations:
-#   - key: "key"
-#     operator: "Equal|Exists"
-#     value: "value"
-#     effect: "NoSchedule|PreferNoSchedule|NoExecute(1.6 only)"
+tolerations:
+- key: "key"
+  operator: "Equal|Exists"
+  value: "value"
+  effect: "NoSchedule|PreferNoSchedule|NoExecute(1.6 only)"
 
 # Node Selector for your deployment. Required to set if deploymentType is Deployment:
 nodeSelector:
@@ -52,15 +52,15 @@ nodeSelector:
 
 # Affinity for your deployment. Include as many as you need and it will
 # be added to your deployment file.
-# affinity:
-#   nodeAffinity:
-#     requiredDuringSchedulingIgnoredDuringExecution:
-#       nodeSelectorTerms:
-#         - matchExpressions:
-#             - key: kubernetes.io/nodepool
-#               operator: In
-#               values:
-#                 - nodepool1
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/nodepool
+              operator: In
+              values:
+                - nodepool1
 
 # Configuration parameters for Agent(s):
 # These must be defined and configured here: https://github.com/sdn-sense/rm-configs
