@@ -128,3 +128,17 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Security Context for the deployment
+*/}}
+{{- define "sitermagent.SecurityContext" -}}
+{{- if .Values.securityContext -}}
+{{ toYaml .Values.securityContext }}
+{{- else -}}
+privileged: true
+capabilities:
+  add:
+  - NET_ADMIN
+{{- end }}
+{{- end }}

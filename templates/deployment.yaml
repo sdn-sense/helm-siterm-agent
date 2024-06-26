@@ -32,16 +32,14 @@ spec:
         name: {{ template "sitermagent.truncname" . }}
         resources:
           limits:
-            cpu: {{ template "cpulimit" .}}
+            cpu: {{ template "cpulimit" . }}
             memory: {{ template "memorylimit" . }}
           requests:
             cpu: {{ template "cpuRequest" . }}
             memory: {{ template "memoryRequest" . }}
         securityContext:
-          privileged: true
-          capabilities:
-            add:
-            - NET_ADMIN
+          {{- include "sitermagent.SecurityContext" . | nindent 10 }}
+        {{- if and (.Values.livenessProbe) ( .Values.livenessProbe )}}
         livenessProbe:
           exec:
             command:
@@ -49,6 +47,8 @@ spec:
           initialDelaySeconds: 60
           periodSeconds: 60
           failureThreshold: 3
+        {{- end }}
+        {{- if and (.Values.readinessProbe) ( .Values.readinessProbe )}}
         readinessProbe:
           exec:
             command:
@@ -56,6 +56,7 @@ spec:
           initialDelaySeconds: 60
           periodSeconds: 60
           failureThreshold: 3
+        {{- end }}
         volumeMounts:
         - mountPath: /etc/siterm.yaml
           name: conf-{{ template "sitermagent.truncname" . }}
