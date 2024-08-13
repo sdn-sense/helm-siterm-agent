@@ -3,7 +3,17 @@ entries:
   siterm-agent:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-06-26T11:24:55.925583-05:00"
+    created: "2024-08-13T09:41:23.562678-05:00"
+    description: A Helm chart for Deploying SiteRM Agent Containers
+    digest: a75c97f6a519ee2618a500223bb324dfc6415956740df891ec96a18ca5800e21
+    name: siterm-agent
+    type: application
+    urls:
+    - https://sdn-sense.github.io/helm-siterm-agent/siterm-agent-0.1.464.tgz
+    version: 0.1.464
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-08-13T09:41:23.560949-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: 19bc95773b7a293ad2d1e2232eb172250d76d74e1f5f79d3cf34efd62d30c40a
     name: siterm-agent
@@ -13,7 +23,7 @@ entries:
     version: 0.1.463
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-06-26T11:24:55.924431-05:00"
+    created: "2024-08-13T09:41:23.559609-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: 7a3f9d28864dd2c73e9f097a80b9d946f37e7540f89b32ae8fe2d1d0371c49da
     name: siterm-agent
@@ -23,7 +33,7 @@ entries:
     version: 0.1.462
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-06-26T11:24:55.923698-05:00"
+    created: "2024-08-13T09:41:23.558785-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: b2fc2b62857fc20d0ccc5a1f26a905e3462d9b5811fd446952aedf7628b85b5d
     name: siterm-agent
@@ -33,7 +43,7 @@ entries:
     version: 0.1.461
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-06-26T11:24:55.921535-05:00"
+    created: "2024-08-13T09:41:23.55494-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: aeda6e96f3907597958f8119b8a314a8d138c72fb0ccf5e157c6121bc73014fd
     name: siterm-agent
@@ -41,4 +51,4 @@ entries:
     urls:
     - https://sdn-sense.github.io/helm-siterm-agent/siterm-agent-0.1.46.tgz
     version: 0.1.46
-generated: "2024-06-26T11:24:55.92098-05:00"
+generated: "2024-08-13T09:41:23.553708-05:00"
