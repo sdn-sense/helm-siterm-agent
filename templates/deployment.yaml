@@ -3,6 +3,8 @@ kind: {{ .Values.deploymentType }}
 metadata:
   labels:
     k8s-app: {{ template "sitermagent.truncname" . }}
+    helm-version: {{ .Chart.Version }}
+    helm-app-version: {{ .Chart.AppVersion }}
   name: {{ template "sitermagent.truncname" . }}
   namespace: {{ .Values.namespace}}
 spec:
@@ -13,6 +15,8 @@ spec:
     metadata:
       labels:
         k8s-app: {{ template "sitermagent.truncname" . }}
+        helm-version: {{ .Chart.Version }}
+        helm-app-version: {{ .Chart.AppVersion }}
     spec:
       {{- if .Values.tolerations }}
       tolerations:
