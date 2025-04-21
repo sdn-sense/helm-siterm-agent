@@ -62,6 +62,10 @@ spec:
           failureThreshold: 3
         {{- end }}
         volumeMounts:
+        {{- if .Values.logstorage.enabled }}
+        - mountPath: /var/log/
+          name: pvclog-{{ template "sitermagent.truncname" . }}
+        {{- end }}
         - mountPath: /etc/siterm.yaml
           name: conf-{{ template "sitermagent.truncname" . }}
           subPath: sense-siterm-agent.yaml
@@ -119,3 +123,8 @@ spec:
             path: /var/run/netns/
             type: ""
           name: run-netns
+        {{- if .Values.logstorage.enabled }}
+        - name: pvclog-{{ template "sitermagent.truncname" . }}
+          persistentVolumeClaim:
+            claimName: pvclog-{{ template "sitermagent.truncname" . }}
+        {{- end }}
