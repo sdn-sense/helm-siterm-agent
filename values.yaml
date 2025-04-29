@@ -40,7 +40,7 @@ deploymentType: Deployment
 
 # Node Selector for your deployment. Required to set if deploymentType is Deployment:
 nodeSelector:
-  kubernetes.io/hostname: node-2-7.sdsc.optiputer.net
+  kubernetes.io/hostname: hostname-replace-me-if-deployment
 # In case of DaemonSet - it will be ignored.
 
 # Affinity for your deployment. Include as many as you need and it will
@@ -95,10 +95,9 @@ readiness:
   timeoutSeconds: 30
 
 
-
 # Configuration parameters for Agent(s):
 # These must be defined and configured here: https://github.com/sdn-sense/rm-configs
-sitename: T2_US_SDSC
+sitename: T2_REPLACE_ME_SITENAME
 gitrepo: "sdn-sense/rm-configs"
 branch: master
 # NOTE: In case deploymentType is DaemonSet - comment out md5 line;
@@ -107,7 +106,7 @@ branch: master
 #
 #       If deploymentType is Deployment - uncomment md5 line and define md5 here.
 #       md5 should be defined for a site under <gitrepo>/<branch>
-md5: 1a2b3c4d5e6f7g8h9i
+md5: 1a2b3c4d5e6f7g8h9iREPLACEMEMD%
 
 # SSL Sertificate parameters:
 # It does support getting certificate from cert-manager or
@@ -117,9 +116,9 @@ md5: 1a2b3c4d5e6f7g8h9i
 # and all certmanager related parameters
 certmanager: true
 certmanager_params:
-  commonName: "sense-node-2-7.sdsc.optiputer.net"
+  commonName: "hostname-replace-me-if-deployment"
   dnsNames:
-    - "sense-node-2-7.sdsc.optiputer.net"
+    - "hostname-replace-me-if-deployment"
 #  duration: 720h0m0s
   issuerRef:
 #    group: cert-manager.io
@@ -138,7 +137,7 @@ certmanager_params:
 issuer: true
 issuer_params:
   name: sense-issuer
-  email: "juztas@gmail.com"
+  email: "myemailaddress@somedomain.com"
   server: "https://acme-v02.api.letsencrypt.org/directory"
 
 # if certmanager is false - set hostcert and hostkey to true - and put all

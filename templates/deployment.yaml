@@ -43,7 +43,28 @@ spec:
             memory: {{ template "memoryRequest" . }}
         securityContext:
           {{- include "sitermagent.SecurityContext" . | nindent 10 }}
-
+        {{- if .Values.liveness.enabled }}
+        livenessProbe:
+          exec:
+            command:
+            - siterm-liveness
+          initialDelaySeconds: {{ .Values.liveness.initialDelaySeconds }}
+          periodSeconds: {{ .Values.liveness.periodSeconds }}
+          failureThreshold: {{ .Values.liveness.failureThreshold }}
+          successThreshold: {{ .Values.liveness.successThreshold }}
+          timeoutSeconds: {{ .Values.liveness.timeoutSeconds }}
+        {{- end }}
+        {{- if .Values.readiness.enabled }}
+        readinessProbe:
+          exec:
+            command:
+            - siterm-readiness
+          initialDelaySeconds: {{ .Values.readiness.initialDelaySeconds }}
+          periodSeconds: {{ .Values.readiness.periodSeconds }}
+          failureThreshold: {{ .Values.readiness.failureThreshold }}
+          successThreshold: {{ .Values.readiness.successThreshold }}
+          timeoutSeconds: {{ .Values.readiness.timeoutSeconds }}
+        {{- end }}
         volumeMounts:
         {{- if .Values.logstorage.enabled }}
         - mountPath: /var/log/

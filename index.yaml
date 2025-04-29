@@ -3,7 +3,17 @@ entries:
   siterm-agent:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-04-29T07:47:49.247492-05:00"
+    created: "2025-04-29T08:09:24.163503-05:00"
+    description: A Helm chart for Deploying SiteRM Agent Containers
+    digest: 5555c2d141be298870e8c4d1ecd44b1543a2be171713bba183037180388c7175
+    name: siterm-agent
+    type: application
+    urls:
+    - https://sdn-sense.github.io/helm-siterm-agent/siterm-agent-1.5.24-rc1.tgz
+    version: 1.5.24-rc1
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-04-29T08:09:24.163129-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: 943543302df7d7cb45129d6ca7ba56ba7d84d3183c557169aeb0e449fedbb07c
     name: siterm-agent
@@ -13,7 +23,7 @@ entries:
     version: 1.5.24-rc0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-04-29T07:47:49.247052-05:00"
+    created: "2025-04-29T08:09:24.16245-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: 7cff2fbf446bbccd4065738441d4dd83cbba702db163a8cab0294da25f4a81f2
     name: siterm-agent
@@ -23,7 +33,7 @@ entries:
     version: 1.5.23
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-04-29T07:47:49.232554-05:00"
+    created: "2025-04-29T08:09:24.145896-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: 38c412d56c12264e19a3fec15c029eb63c69ca1d97ef8971843e8fc75171cea7
     name: siterm-agent
@@ -33,7 +43,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-04-29T07:47:49.224783-05:00"
+    created: "2025-04-29T08:09:24.137194-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: e6da9d065904e58fc93d778279abfff647f2c915c640917d4ca4959c8de6cfbb
     name: siterm-agent
@@ -43,7 +53,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-04-29T07:47:49.212748-05:00"
+    created: "2025-04-29T08:09:24.126174-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: a75c97f6a519ee2618a500223bb324dfc6415956740df891ec96a18ca5800e21
     name: siterm-agent
@@ -53,7 +63,7 @@ entries:
     version: 0.1.464
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-04-29T07:47:49.210661-05:00"
+    created: "2025-04-29T08:09:24.124034-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: 19bc95773b7a293ad2d1e2232eb172250d76d74e1f5f79d3cf34efd62d30c40a
     name: siterm-agent
@@ -63,7 +73,7 @@ entries:
     version: 0.1.463
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-04-29T07:47:49.208885-05:00"
+    created: "2025-04-29T08:09:24.122404-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: 7a3f9d28864dd2c73e9f097a80b9d946f37e7540f89b32ae8fe2d1d0371c49da
     name: siterm-agent
@@ -73,7 +83,7 @@ entries:
     version: 0.1.462
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-04-29T07:47:49.207527-05:00"
+    created: "2025-04-29T08:09:24.1211-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: b2fc2b62857fc20d0ccc5a1f26a905e3462d9b5811fd446952aedf7628b85b5d
     name: siterm-agent
@@ -83,7 +93,7 @@ entries:
     version: 0.1.461
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-04-29T07:47:49.206645-05:00"
+    created: "2025-04-29T08:09:24.120115-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: aeda6e96f3907597958f8119b8a314a8d138c72fb0ccf5e157c6121bc73014fd
     name: siterm-agent
@@ -93,7 +103,7 @@ entries:
     version: 0.1.46
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-04-29T07:47:49.218507-05:00"
+    created: "2025-04-29T08:09:24.129439-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: ee884df676dd196cf2ed74339254db028061ebc46c3693810bbb95467a017675
     name: siterm-agent
@@ -101,4 +111,4 @@ entries:
     urls:
     - https://sdn-sense.github.io/helm-siterm-agent/siterm-agent-0.1.5.tgz
     version: 0.1.5
-generated: "2025-04-29T07:47:49.205704-05:00"
+generated: "2025-04-29T08:09:24.119002-05:00"
