@@ -64,14 +64,6 @@ nodeSelector:
 #    add:
 #    - NET_ADMIN
 
-# Liveness probe for your deployment. It checks if agent is running and healthy.
-# By default - it will not add liveness probe if this option is commented out.
-livenessProbe: true
-# Readiness probe for your deployment. It checks if agent is ready to accept connections.
-# By default - it will not add readiness probe if this option is commented out.
-readinessProbe: true
-
-
 # Persistent volume claim for Agent logs.
 # This should not require any changes if you run ceph and no others are supported yet.
 # If you have another storage class, change it (no guarantees to work and might need manual configuration)
@@ -80,6 +72,29 @@ logstorage:
   enabled: true
   storageClassName: rook-ceph-block
   capacity: 5Gi
+
+
+# Liveness and readiness probes for deployment.
+# Liveness probe for your deployment. It checks if agent is running and healthy.
+# By default - this is enabled and will be added to deployment.
+liveness:
+  enabled: true
+  initialDelaySeconds: 30
+  periodSeconds: 60
+  failureThreshold: 5
+  successThreshold: 1
+  timeoutSeconds: 30
+# Readiness probe for your deployment. It checks if agent is ready to accept connections.
+# By default - this is enabled and will be added to deployment.
+readiness:
+  enabled: true
+  initialDelaySeconds: 30
+  periodSeconds: 60
+  failureThreshold: 5
+  successThreshold: 1
+  timeoutSeconds: 30
+
+
 
 # Configuration parameters for Agent(s):
 # These must be defined and configured here: https://github.com/sdn-sense/rm-configs
