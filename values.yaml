@@ -25,10 +25,10 @@ deploymentType: Deployment
 # Resources for Agent. This should not require any changes.
 # Defaults below (no need to uncomment and those will be used by helm chart)
 # Change it only if needed.
-#cpuLimit: 2
-#memoryLimit: 4Gi
-#cpuRequest: 1
-#memoryRequest: 2Gi
+cpuLimit: 2
+memoryLimit: 4Gi
+cpuRequest: 600m
+memoryRequest: 2Gi
 
 # tolerations for your deployment. Include as many as you need and it will
 # be added to your deployment file.
