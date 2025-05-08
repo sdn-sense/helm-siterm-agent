@@ -34,7 +34,7 @@ Define CPU and Memory Limits/Requests
 */}}
 {{- define "cpulimit" -}}
 {{- if .Values.cpuLimit }}
-{{- printf "%d" (.Values.cpuLimit | int) }}
+{{- printf "%s" (.Values.cpuLimit) }}
 {{- else }}
 {{- printf "2"}}
 {{- end }}
@@ -42,7 +42,7 @@ Define CPU and Memory Limits/Requests
 
 {{- define "cpuRequest" -}}
 {{- if .Values.cpuRequest }}
-{{- printf "%d" (.Values.cpuRequest | int) }}
+{{- printf "%s" (.Values.cpuRequest) }}
 {{- else }}
 {{- printf "1"}}
 {{- end }}
