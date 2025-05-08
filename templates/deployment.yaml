@@ -52,6 +52,13 @@ spec:
             memory: {{ template "memoryRequest" . }}
         securityContext:
           {{- include "sitermagent.SecurityContext" . | nindent 10 }}
+        {{- if and .Values.logstorage.enabled (eq .Values.deploymentType "DaemonSet") }}
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        {{- end }}
         {{- if .Values.liveness.enabled }}
         livenessProbe:
           exec:
@@ -139,5 +146,5 @@ spec:
         {{- if .Values.logstorage.enabled }}
         - name: pvclog-{{ template "sitermagent.truncname" . }}
           persistentVolumeClaim:
-            claimName: pvclog-{{ template "sitermagent.truncname" . }}
+            claimName: {{ if eq .Values.deploymentType "DaemonSet" }}pvclog-{{ template "sitermagent.truncname" . }}-$(NODE_NAME){{ else }}pvclog-{{ template "sitermagent.truncname" . }}{{ end }}
         {{- end }}

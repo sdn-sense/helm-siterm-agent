@@ -72,7 +72,12 @@ logstorage:
   enabled: true
   storageClassName: rook-ceph-block
   capacity: 5Gi
-
+  # If you run DaemonSet - set nodes to true and define nodes below.
+  # It will create separate PVC for each node. nodes only used for DaemonSet.
+  # If you run Deployment - nodes will be ignored.
+  nodes:
+  - hostname.my.domain
+  - hostname1.my.domain
 
 # Liveness and readiness probes for deployment.
 # Liveness probe for your deployment. It checks if agent is running and healthy.
