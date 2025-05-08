@@ -1,4 +1,4 @@
-{{- if and .Values.logstorage.enabled (eq .Values.deploymentType "Deployment") }}
+{{- if .Values.logstorage.enabled -}}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -12,22 +12,4 @@ spec:
     requests:
       storage: {{ .Values.logstorage.capacity }}
   storageClassName: {{ .Values.logstorage.storageClassName }}
-{{- end }}
-
-{{- if and .Values.logstorage.enabled (eq .Values.deploymentType "DaemonSet") (hasKey .Values.logstorage "nodes") (gt (len .Values.logstorage.nodes) 0) }}
-{{- range .Values.logstorage.nodes }}
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: pvclog-{{ template "sitermagent.truncname" $ }}-{{ . }}
-  namespace: {{ $.Values.namespace }}
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: {{ $.Values.logstorage.capacity }}
-  storageClassName: {{ $.Values.logstorage.storageClassName }}
-{{- end }}
-{{- end }}
+{{- end -}}
