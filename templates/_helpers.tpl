@@ -1,9 +1,3 @@
-{{- /*
-This check ensures DaemonSet cannot be used with logstorage enabled.
-*/ -}}
-{{- if and (eq .Values.deploymentType "DaemonSet") (eq .Values.logstorage.enabled true) }}
-{{- fail "Error: 'DaemonSet' deployment type cannot be used when 'logstorage.enabled' is true. Please disable logstorage or change deploymentType to 'Deployment'." }}
-{{- end }}
 {{/*
 Define Deployment image
 */}}
