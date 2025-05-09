@@ -139,5 +139,5 @@ spec:
         {{- if .Values.logstorage.enabled }}
         - name: pvclog-{{ template "sitermagent.truncname" . }}
           persistentVolumeClaim:
-            claimName: pvclog-{{ template "sitermagent.truncname" . }}
+            claimName: {{ .Values.logstorage.volname | default (printf "pvclog-%s" (include "sitermagent.truncname" .)) }}
         {{- end }}

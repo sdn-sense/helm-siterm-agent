@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvclog-{{ template "sitermagent.truncname" . }}
+  name: {{ .Values.logstorage.volname | default (printf "pvclog-%s" (include "sitermagent.truncname" .)) }}
   namespace: {{ .Values.namespace }}
 spec:
   accessModes:
