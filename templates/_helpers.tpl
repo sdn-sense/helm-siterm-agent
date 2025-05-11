@@ -44,7 +44,7 @@ Define CPU and Memory Limits/Requests
 {{- if .Values.cpuRequest }}
 {{- toString .Values.cpuRequest }}
 {{- else }}
-{{- printf "1"}}
+{{- printf "600m"}}
 {{- end }}
 {{- end }}
 
@@ -60,7 +60,7 @@ Define CPU and Memory Limits/Requests
 {{- if .Values.memoryRequest }}
 {{- toString .Values.memoryRequest }}
 {{- else }}
-{{- printf "2Gi"}}
+{{- printf "1Gi"}}
 {{- end }}
 {{- end }}
 
