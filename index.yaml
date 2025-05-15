@@ -3,7 +3,17 @@ entries:
   siterm-agent:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-05-12T08:34:47.524167-05:00"
+    created: "2025-05-14T19:25:31.119801-05:00"
+    description: A Helm chart for Deploying SiteRM Agent Containers
+    digest: 3a66705ccdad6650568df68a79fd6cec1d9ba8860a46b27305d8c1253566deb7
+    name: siterm-agent
+    type: application
+    urls:
+    - https://sdn-sense.github.io/helm-siterm-agent/siterm-agent-1.5.33.tgz
+    version: 1.5.33
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-05-14T19:25:31.116962-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: 3b4529c460476134b6831ca579d86b0cc5acf2654ba528bcb6f5635e0096d05d
     name: siterm-agent
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://sdn-sense.github.io/helm-siterm-agent/siterm-agent-1.5.32.tgz
     version: 1.5.32
-generated: "2025-05-12T08:34:47.523666-05:00"
+generated: "2025-05-14T19:25:31.116209-05:00"
