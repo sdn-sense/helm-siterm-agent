@@ -6,10 +6,10 @@ Define Deployment image
 {{- if .Values.image.image }}
 {{- printf "sdnsense/site-agent-sense:%s" .Values.image.image }}
 {{- else }}
-{{- printf "sdnsense/site-agent-sense:dev-20250519"}}
+{{- printf "sdnsense/site-agent-sense:latest-20250515"}}
 {{- end }}
 {{- else }}
-{{- printf "sdnsense/site-agent-sense:dev-20250519"}}
+{{- printf "sdnsense/site-agent-sense:latest-20250515"}}
 {{- end }}
 {{- end }}
 
@@ -136,7 +136,6 @@ Security Context for the deployment
 {{- if .Values.securityContext -}}
 {{ toYaml .Values.securityContext }}
 {{- else -}}
-privileged: true
 capabilities:
   add:
   - NET_ADMIN

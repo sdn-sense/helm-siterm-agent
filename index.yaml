@@ -3,7 +3,17 @@ entries:
   siterm-agent:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-05-19T06:22:30.727114-05:00"
+    created: "2025-06-05T14:21:45.894982-05:00"
+    description: A Helm chart for Deploying SiteRM Agent Containers
+    digest: 50cbac4f4ad4265a92edf3b86214896ac4518ea1d787f3a4ed531a936d8ef6a6
+    name: siterm-agent
+    type: application
+    urls:
+    - https://sdn-sense.github.io/helm-siterm-agent/siterm-agent-1.5.35.tgz
+    version: 1.5.35
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-06-05T14:21:45.894339-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: 2fd4736876fd514f69f36d5f2b3182f0b96a82fd3a255d3b7d6def101a616b5a
     name: siterm-agent
@@ -13,7 +23,7 @@ entries:
     version: 1.5.35-rc01
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-05-19T06:22:30.726498-05:00"
+    created: "2025-06-05T14:21:45.893215-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: 3786c7552622a1400db4bd4d525fd626cfcd801cc27a04065f99205dc02222c4
     name: siterm-agent
@@ -23,7 +33,7 @@ entries:
     version: 1.5.34
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-05-19T06:22:30.72553-05:00"
+    created: "2025-06-05T14:21:45.890142-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: 3a66705ccdad6650568df68a79fd6cec1d9ba8860a46b27305d8c1253566deb7
     name: siterm-agent
@@ -33,7 +43,7 @@ entries:
     version: 1.5.33
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-05-19T06:22:30.724527-05:00"
+    created: "2025-06-05T14:21:45.889155-05:00"
     description: A Helm chart for Deploying SiteRM Agent Containers
     digest: 3b4529c460476134b6831ca579d86b0cc5acf2654ba528bcb6f5635e0096d05d
     name: siterm-agent
@@ -41,4 +51,4 @@ entries:
     urls:
     - https://sdn-sense.github.io/helm-siterm-agent/siterm-agent-1.5.32.tgz
     version: 1.5.32
-generated: "2025-05-19T06:22:30.723836-05:00"
+generated: "2025-06-05T14:21:45.88836-05:00"
